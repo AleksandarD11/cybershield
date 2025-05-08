@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberShield</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function changeLanguage(lang) {
+      document.querySelector('html').lang = lang;
+      alert("Езикът е променен на " + lang.toUpperCase());
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>CyberShield</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Начало</a></li>
+        <li><a href="admin.html">Админ</a></li>
+        <li><a href="#" onclick="changeLanguage('en')">EN</a> | <a href="#" onclick="changeLanguage('bg')">BG</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Форма за заявка</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Име" required><br>
+        <input type="email" id="email" placeholder="Имейл" required><br>
+        <textarea id="message" placeholder="Съобщение" required></textarea><br>
+        <button type="submit">Изпрати</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 CyberShield</p>
+  </footer>
+
+  <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/your_property_id/1xyz'; // Replace with real ID
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+  </script>
+
+  <!-- EmailJS Integration Placeholder -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Изпращане на имейл... (тук ще бъде EmailJS или SMTP реализация)");
+    });
+  </script>
+</body>
+</html>

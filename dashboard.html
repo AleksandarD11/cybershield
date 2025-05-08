@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Моите заявки</title>
+  <script src="firebase.js"></script>
+</head>
+<body>
+  <h2>Заявки на потребителя</h2>
+  <button onclick="logout()">Изход</button>
+  <div id="requests"></div>
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = 'login.html';
+      } else {
+        const uid = user.uid;
+        firebase.firestore().collection("requests")
+          .where("uid", "==", uid)
+          .get()
+          .then(snapshot => {
+            let html = '<ul>';
+            snapshot.forEach(doc => {
+              const data = doc.data();
+              html += `<li><b>${data.name}</b> (${data.email}): ${data.message}</li>`;
+            });
+            html += '</ul>';
+            document.getElementById("requests").innerHTML = html;
+          });
+      }
+    });
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = 'login.html';
+      });
+    }
+  </script>
+</body>
+</html>

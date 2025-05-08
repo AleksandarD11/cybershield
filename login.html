@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Вход</title>
+  <script src="firebase.js"></script>
+</head>
+<body>
+  <h2>Вход</h2>
+  <input type="email" id="email" placeholder="Имейл">
+  <input type="password" id="password" placeholder="Парола">
+  <button onclick="login()">Вход</button>
+  <p>Нямате акаунт? <a href="register.html">Регистрация</a></p>
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => window.location.href = 'dashboard.html')
+        .catch(err => alert(err.message));
+    }
+  </script>
+</body>
+</html>
